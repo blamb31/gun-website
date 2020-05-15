@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/brand-colors.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+
+*:focus {
+  outline: none;
+}
+*:active {
+  outline: none;
+}
+a:hover {
+  cursor: pointer;
+}
+a.link {
+  color: $link-color;
+}
+
+.gray-back {
+  background: $gray-back;
+}
+
+.round-edges {
+  border-radius: 7px;
+}
+
+.form-control-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border-radius: 7px;
+  padding: 5px 15px;
+  outline: none;
+  border: none;
+}
+
+.btn-primary {
+  background: $primary-color;
+}

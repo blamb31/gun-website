@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gun-website"
+    }
+  },
+  "defaultProject": "gun-website",
+  "cli": {
+    "analytics": "341517e2-e98b-42c0-bc9d-9a0e1a47e970"
+  }
 }

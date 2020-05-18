@@ -34,16 +34,8 @@ export class LoginComponent implements OnInit {
   login() {
     console.log('hithit');
     this._auth.login();
-    let test;
-    this._auth
-      .getUser$()
-      .pipe(
-        tap((data) => {
-          console.log(data);
-          test = data;
-        })
-      )
-      .subscribe();
-    localStorage.setItem('loggedin', test);
+
+    let test = this._auth.loggedIn;
+    localStorage.setItem('loggedin', JSON.stringify(test));
   }
 }

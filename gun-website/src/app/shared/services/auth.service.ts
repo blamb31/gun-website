@@ -84,6 +84,7 @@ export class AuthService {
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
+      localStorage.setItem('test', JSON.stringify(client));
       client.loginWithRedirect({
         redirect_uri: `${window.location.origin}`,
         appState: { target: redirectPath },
@@ -123,9 +124,10 @@ export class AuthService {
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
+      console.log(`${window.location.origin}/mylogin`);
       client.logout({
         client_id: 'ZklFFPM0KLnHnXSO51YopVcV9nuj8NBi',
-        returnTo: `${window.location.origin}`,
+        returnTo: `${window.location.origin}/mylogin`,
       });
     });
   }

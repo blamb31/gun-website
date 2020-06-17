@@ -9,7 +9,7 @@ require("dotenv").config();
 
 const { SESSION_SECRET, SERVER_PORT } = process.env;
 
-const testCtrl = require("./controllers/test");
+const authCtrl = require("./controllers/auth");
 
 // const db = await massive({
 //   host: "127.0.0.1",
@@ -49,4 +49,5 @@ app.use(
   })
 );
 
-app.get("/test/test1", testCtrl.getTest1);
+app.post("/auth/login", authCtrl.login);
+app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);

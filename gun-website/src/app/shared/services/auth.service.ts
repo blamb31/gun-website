@@ -124,10 +124,9 @@ export class AuthService {
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
-      console.log(`${window.location.origin}/mylogin`);
       client.logout({
         client_id: 'ZklFFPM0KLnHnXSO51YopVcV9nuj8NBi',
-        returnTo: `${window.location.origin}/mylogin`,
+        returnTo: `${window.location.origin}/login`,
       });
     });
   }

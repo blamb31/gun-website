@@ -1,23 +1,9 @@
-<!-- <div
-  class="gray-back px-5 py-3 d-flex align-items-center justify-content-between"
->
-  <h2>Arm In Arm</h2>
-  <div class="d-flex justify-content-between w-50">
-    <a>Home</a>
-    <a>Guns</a>
-    <a>Sell</a>
-    <a>Likes</a>
-    <a>Profile</a>
-  </div>
-  <img class="logo" src="/assets/gunLogo.png" />
-</div> -->
 <nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
   <div class="container-fluid p-0 w-100">
     <div
       id="nav-container"
       class="d-flex align-items-center justify-content-between w-50"
     >
-      <!-- <h3 class="m-0 p-0">Blake Lamb</h3> -->
       <h1 class="m-0 ml-0 p-0 w-75 d-flex justify-content-start">
         <a class="nabvar-brand">Arm in Arm </a>
       </h1>
@@ -46,7 +32,14 @@
       <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
         >Liked Guns</a
       >
-      <a class="nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+      <a
+        *ngIf="isLoggedIn"
+        [routerLink]=""
+        class="nav-link ml-3"
+        (click)="logout()"
+        >Logout</a
+      >
     </div>
     <!-- <img class="logo" src="/assets/gunLogo.png" /> -->
   </div>

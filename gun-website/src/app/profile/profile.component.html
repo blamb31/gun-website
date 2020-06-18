@@ -1,1 +1,6 @@
-<p>profile works!</p>
+<div class="w-100">
+  <div *ngIf="personInfo$ | async as info">
+    <h3>{{ info.name }}</h3>
+    <img id="profile-picture" [src]="info.picture" />
+  </div>
+</div>

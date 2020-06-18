@@ -10,6 +10,7 @@
 }
 a:hover {
   cursor: pointer;
+  text-decoration: none;
 }
 a.link {
   color: $link-color;
@@ -29,12 +30,23 @@ a.link {
 }
 
 .btn {
-  border-radius: 7px;
   padding: 5px 15px;
-  outline: none;
-  border: none;
+  border-radius: 7px;
 }
 
 .btn-primary {
   background: $primary-color;
+  color: black;
+  border: 1px solid black;
+  padding: 0.3rem 2.5rem;
+}
+.btn-primary:hover {
+  background: $gray-back;
+  border: 1px solid black;
+  color: black;
+}
+.btn-primary:active {
+  background: $primary-color;
+  border: 1px solid black;
+  color: black;
 }

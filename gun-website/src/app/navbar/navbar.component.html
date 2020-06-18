@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="gray-back px-5 py-3 d-flex align-items-center justify-content-between"
 >
   <h2>Arm In Arm</h2>
@@ -10,4 +10,75 @@
     <a>Profile</a>
   </div>
   <img class="logo" src="/assets/gunLogo.png" />
-</div>
+</div> -->
+<nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
+  <div class="container-fluid p-0 w-100">
+    <div
+      id="nav-container"
+      class="d-flex align-items-center justify-content-between w-50"
+    >
+      <!-- <h3 class="m-0 p-0">Blake Lamb</h3> -->
+      <h1 class="m-0 ml-0 p-0 w-75 d-flex justify-content-start">
+        <a class="nabvar-brand">Arm in Arm </a>
+      </h1>
+
+      <!-- <div class="" id="">
+        <div class="nav navbar-nav">
+          <div class="d-flex">
+            <a class="mr-3 nav-link" [routerLink]="['/']">About </a>
+            <a class="mr-3 nav-link" [routerLink]="['/blog-home']">Blog</a>
+            <a class="mr-3 nav-link" [routerLink]="['/tags']">Tags</a>
+            <a class="mr-3 nav-link" [routerLink]="['/resume']">Resume</a>
+            <a class="mr-3 nav-link" [routerLink]="['/skills']">Skills</a>
+            <a class="nav-link" [routerLink]="['/contact']">Contact Me</a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <button
+        type="button"
+        class="navbar-toggle m-0 p-0"
+        data-toggle="collapse"
+        data-target="#myNavbar"
+      >
+        <div class="d-flex m-2">
+          <p class="mr-3 mb-0">Menu</p>
+          <div>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </div>
+        </div>
+      </button> -->
+      <button
+        class="navbar-toggler navbar-toggler-right m-0 p-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div
+      class="collapse navbar-collapse p-0 mr-0 d-flex justify-content-end"
+      id="navbarResponsive"
+    >
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
+      <!-- <a class="mr-3 nav-link ml-3" [routerLink]="['/blog-home']">Blog</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/tags']">Tags</a> -->
+
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
+        >My Listings</a
+      >
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
+        >Liked Guns</a
+      >
+      <a class="nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+    </div>
+    <!-- <img class="logo" src="/assets/gunLogo.png" /> -->
+  </div>
+</nav>

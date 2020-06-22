@@ -2,12 +2,6 @@
 @import "src/brand-colors.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 
-*:focus {
-  outline: none;
-}
-*:active {
-  outline: none;
-}
 a:hover {
   cursor: pointer;
   text-decoration: none;
@@ -49,4 +43,7 @@ a.link {
   background: $primary-color;
   border: 1px solid black;
   color: black;
+}
+.title {
+  font-size: 3.5rem;
 }

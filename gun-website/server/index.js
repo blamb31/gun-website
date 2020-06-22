@@ -19,10 +19,6 @@ const authCtrl = require("./controllers/auth");
 //   password: "apppwd",
 // });
 
-app.listen(SERVER_PORT, () =>
-  console.log(`Server is listening at http://localhost:${SERVER_PORT}`)
-);
-
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 
 // req.isAuthenticated is provided from the auth router
@@ -49,5 +45,17 @@ app.use(
   })
 );
 
-app.post("/auth/login", authCtrl.login);
-app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);
+massive(CONNECTION_STRING).then((db) => {
+  app.set("db", db);
+  console.log(`The DB is connected!`);
+  app.listen(SERVER_PORT, () =>
+    console.log(`Server listening on port: ${SERVER_PORT}`)
+  );
+});
+
+// app.listen(SERVER_PORT, () =>
+//   console.log(`Server is listening at http://localhost:${SERVER_PORT}`)
+// );
+
+app.get("/auth/login", authCtrl.login);
+// app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);

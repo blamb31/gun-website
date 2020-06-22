@@ -12,6 +12,11 @@ const routes: Routes = [
     // canActivate: [!RouterModule],
   },
   {
+    path: '',
+    redirectTo: '/guns',
+    pathMatch: 'full',
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],

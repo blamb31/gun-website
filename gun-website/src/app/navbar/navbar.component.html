@@ -8,39 +8,36 @@
         <a class="nabvar-brand">Arm in Arm </a>
       </h1>
       <button
-        class="navbar-toggler navbar-toggler-right m-0 p-0"
+        class="navbar-toggler m-0 p-0"
         type="button"
         data-toggle="collapse"
         data-target="#navbarResponsive"
         aria-controls="navbarResponsive"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        *ngIf="isLoggedIn"
       >
         Menu
         <i class="fa fa-bars"></i>
       </button>
     </div>
     <div
-      class="collapse navbar-collapse p-0 mr-0 d-flex justify-content-end"
+      class="navbar-collapse collapse p-0 mr-0 d-flex justify-content-end"
       id="navbarResponsive"
     >
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
+      <ng-container *ngIf="isLoggedIn">
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
 
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
-        >My Listings</a
-      >
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
-        >Liked Guns</a
-      >
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
-      <a
-        *ngIf="isLoggedIn"
-        [routerLink]=""
-        class="nav-link ml-3"
-        (click)="logout()"
-        >Logout</a
-      >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
+          >My Listings</a
+        >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
+          >Liked Guns</a
+        >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+        <a [routerLink]="" class="nav-link ml-3" (click)="logout()">Logout</a>
+      </ng-container>
     </div>
-    <!-- <img class="logo" src="/assets/gunLogo.png" /> -->
+    <img *ngIf="!isLoggedIn" class="logo" src="/assets/gunLogo.png" />
   </div>
 </nav>

@@ -1,4 +1,18 @@
+@import "src/brand-colors.scss";
+
 #formDiv {
   border: 2px solid black;
   background: whitesmoke;
+}
+.full-height {
+  min-height: 56vh;
+}
+.btn {
+  font-size: large;
+}
+
+#login-box {
+  border: 1px solid black;
+  background: $dark-gray;
+  box-shadow: 0px 0px 25px 15px #cbcbcb;
 }

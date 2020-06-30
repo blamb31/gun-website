@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
+<!-- <nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
   <div class="container-fluid p-0 w-100">
     <div
       id="nav-container"
@@ -21,11 +21,11 @@
         <i class="fa fa-bars"></i>
       </button>
     </div>
-    <div
-      class="navbar-collapse collapse p-0 mr-0 d-flex justify-content-end"
-      id="navbarResponsive"
-    >
-      <ng-container *ngIf="isLoggedIn">
+    <ng-container *ngIf="isLoggedIn">
+      <div
+        class="navbar-collapse collapse p-0 mr-0 d-flex justify-content-end"
+        id="navbarResponsive"
+      >
         <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
 
         <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
@@ -36,8 +36,43 @@
         >
         <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
         <a [routerLink]="" class="nav-link ml-3" (click)="logout()">Logout</a>
-      </ng-container>
-    </div>
+      </div>
+    </ng-container>
     <img *ngIf="!isLoggedIn" class="logo" src="/assets/gunLogo.png" />
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-default navbar-expand-lg py-5">
+  <div class="container-fluid p-0">
+    <div
+      id="nav-container"
+      class="d-flex align-items-center justify-content-between w-100"
+    >
+      <h3 class="m-0 ml-5 p-0">
+        <a class="nabvar-brand" href="/">Blake Lamb</a>
+      </h3>
+
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse w-75 p-0 mr-3" id="navbarResponsive">
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/']">About Me</a>
+      <!-- <a class="mr-3 nav-link ml-3" [routerLink]="['/blog-home']">Blog</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/tags']">Tags</a> -->
+
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/resume']">Resume</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/skills']">Skills</a>
+      <a class="nav-link ml-3" [routerLink]="['/contact']">Contact Me</a>
+    </div>
   </div>
 </nav>

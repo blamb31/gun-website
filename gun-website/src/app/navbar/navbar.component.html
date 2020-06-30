@@ -65,14 +65,21 @@
         <i class="fa fa-bars"></i>
       </button>
     </div>
-    <div class="collapse navbar-collapse w-75 p-0 mr-3" id="navbarResponsive">
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/']">About Me</a>
-      <!-- <a class="mr-3 nav-link ml-3" [routerLink]="['/blog-home']">Blog</a>
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/tags']">Tags</a> -->
+    <div
+      *ngIf="isLoggedIn"
+      class="collapse navbar-collapse w-75 p-0 mr-3"
+      id="navbarResponsive"
+    >
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
 
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/resume']">Resume</a>
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/skills']">Skills</a>
-      <a class="nav-link ml-3" [routerLink]="['/contact']">Contact Me</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
+        >My Listings</a
+      >
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
+        >Liked Guns</a
+      >
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+      <a [routerLink]="" class="nav-link ml-3" (click)="logout()">Logout</a>
     </div>
   </div>
 </nav>

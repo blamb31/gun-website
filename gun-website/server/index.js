@@ -9,8 +9,7 @@ require("dotenv").config();
 
 const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
 
-const authCtrl = require("./controllers/auth");
-const testCtrl = require("./controllers/test");
+const gunsCtrl = require("./controllers/guns");
 
 mongoose.connect("mongodb://127.0.0.1/gun-app", {
   useNewUrlParser: true,
@@ -48,7 +47,6 @@ app.use(
   })
 );
 
-app.get("/auth/login", authCtrl.login);
-app.post("/test/testPost", testCtrl.testPost);
-app.get("/test/testGet", testCtrl.testGet);
-// app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);
+app.post("/guns/createGun", gunsCtrl.createGun);
+app.get("/guns/getGuns", gunsCtrl.getAll);
+app.get("/guns/getGun", gunsCtrl.getGunById);

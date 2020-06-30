@@ -10,7 +10,5 @@ import { tap } from 'rxjs/operators';
 export class SearchComponent implements OnInit {
   constructor(private _http: HttpClient) {}
 
-  ngOnInit() {
-    return this._http.get('http://localhost:4000/auth/login').subscribe();
-  }
+  ngOnInit() {}
 }

@@ -1,28 +1,59 @@
-<!-- <div
-  class="gray-back px-5 py-3 d-flex align-items-center justify-content-between"
->
-  <h2>Arm In Arm</h2>
-  <div class="d-flex justify-content-between w-50">
-    <a>Home</a>
-    <a>Guns</a>
-    <a>Sell</a>
-    <a>Likes</a>
-    <a>Profile</a>
-  </div>
-  <img class="logo" src="/assets/gunLogo.png" />
-</div> -->
-<nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
+<!-- <nav class="navbar navbar-default navbar-expand-lg p-5 gray-back">
   <div class="container-fluid p-0 w-100">
     <div
       id="nav-container"
       class="d-flex align-items-center justify-content-between w-50"
     >
-      <!-- <h3 class="m-0 p-0">Blake Lamb</h3> -->
       <h1 class="m-0 ml-0 p-0 w-75 d-flex justify-content-start">
         <a class="nabvar-brand">Arm in Arm </a>
       </h1>
       <button
-        class="navbar-toggler navbar-toggler-right m-0 p-0"
+        class="navbar-toggler m-0 p-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        *ngIf="isLoggedIn"
+      >
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <ng-container *ngIf="isLoggedIn">
+      <div
+        class="navbar-collapse collapse p-0 mr-0 d-flex justify-content-end"
+        id="navbarResponsive"
+      >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
+
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
+          >My Listings</a
+        >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
+          >Liked Guns</a
+        >
+        <a class="mr-3 nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+        <a [routerLink]="" class="nav-link ml-3" (click)="logout()">Logout</a>
+      </div>
+    </ng-container>
+    <img *ngIf="!isLoggedIn" class="logo" src="/assets/gunLogo.png" />
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-default navbar-expand-lg py-5">
+  <div class="container-fluid p-0">
+    <div
+      id="nav-container"
+      class="d-flex align-items-center justify-content-between w-100"
+    >
+      <h3 class="m-0 ml-5 p-0">
+        <a class="nabvar-brand" href="/">Blake Lamb</a>
+      </h3>
+
+      <button
+        class="navbar-toggler navbar-toggler-right"
         type="button"
         data-toggle="collapse"
         data-target="#navbarResponsive"
@@ -34,20 +65,14 @@
         <i class="fa fa-bars"></i>
       </button>
     </div>
-    <div
-      class="collapse navbar-collapse p-0 mr-0 d-flex justify-content-end"
-      id="navbarResponsive"
-    >
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/search']">Guns</a>
+    <div class="collapse navbar-collapse w-75 p-0 mr-3" id="navbarResponsive">
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/']">About Me</a>
+      <!-- <a class="mr-3 nav-link ml-3" [routerLink]="['/blog-home']">Blog</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/tags']">Tags</a> -->
 
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/listings']"
-        >My Listings</a
-      >
-      <a class="mr-3 nav-link ml-3" [routerLink]="['/guns/likes']"
-        >Liked Guns</a
-      >
-      <a class="nav-link ml-3" [routerLink]="['/profile']">Profile</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/resume']">Resume</a>
+      <a class="mr-3 nav-link ml-3" [routerLink]="['/skills']">Skills</a>
+      <a class="nav-link ml-3" [routerLink]="['/contact']">Contact Me</a>
     </div>
-    <!-- <img class="logo" src="/assets/gunLogo.png" /> -->
   </div>
 </nav>

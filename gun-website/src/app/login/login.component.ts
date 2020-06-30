@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TestServiceService } from '../shared/services/test-service.service';
 import { tap, switchMap } from 'rxjs/operators';
 import { AuthService } from '../shared/services/auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _auth: AuthService,
-    private testService: TestServiceService,
     private _http: HttpClient
   ) {}
 
@@ -27,15 +25,10 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.maxLength(50)]],
     });
-
-    this.testService
-      .getTest1()
-      .pipe(tap((data) => console.log({ data })))
-      .subscribe();
   }
 
   login() {
-    let test = this._auth.login();
+    this._auth.login();
     // this._http.post('http://localhost:4000/auth/login', {
     //   user,
     //   userLoggedIn,

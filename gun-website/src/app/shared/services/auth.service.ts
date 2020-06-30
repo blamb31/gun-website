@@ -41,6 +41,7 @@ export class AuthService {
   // Create subject and public observable of user profile data
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
+  public isLoggedIn$: Observable<boolean>;
   // Create a local property for login status
   loggedIn: boolean = null;
 
@@ -78,15 +79,14 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = '/') {
+  login(redirectPath: string = '/guns/search') {
     // A desired redirect path can be passed to login method
     // (e.g., from a route guard)
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
-      localStorage.setItem('test', JSON.stringify(client));
       client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}`,
+        redirect_uri: `${window.location.origin}/guns/search`,
         appState: { target: redirectPath },
       });
     });
@@ -124,10 +124,9 @@ export class AuthService {
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
-      console.log(`${window.location.origin}/mylogin`);
       client.logout({
         client_id: 'ZklFFPM0KLnHnXSO51YopVcV9nuj8NBi',
-        returnTo: `${window.location.origin}/mylogin`,
+        returnTo: `${window.location.origin}/login`,
       });
     });
   }

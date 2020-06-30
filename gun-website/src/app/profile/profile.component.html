@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<div class="w-100 d-flex justify-content-center">
+  <div
+    *ngIf="personInfo$ | async as info"
+    class="d-flex flex-column align-items-center"
+  >
+    <h1 id="profile-name">{{ info.name }}</h1>
+    <img id="profile-picture" [src]="info.picture" />
+    <div>
+      <!-- Insert Form Here -->
+    </div>
+  </div>
+</div>

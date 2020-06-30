@@ -16,38 +16,6 @@ import { LikesComponent } from './likes/likes.component';
     LikesComponent,
   ],
 
-  imports: [
-    CommonModule,
-    GunsRoutingModule,
-    RouterModule.forChild([
-      {
-        path: 'search',
-        children: [
-          {
-            path: '',
-            component: SearchComponent,
-          },
-        ],
-      },
-      {
-        path: 'listings',
-        children: [
-          {
-            path: '',
-            component: ListingsComponent,
-          },
-        ],
-      },
-      {
-        path: 'likes',
-        children: [
-          {
-            path: '',
-            component: LikesComponent,
-          },
-        ],
-      },
-    ]),
-  ],
+  imports: [CommonModule, GunsRoutingModule, RouterModule.forChild([])],
 })
 export class GunsModule {}

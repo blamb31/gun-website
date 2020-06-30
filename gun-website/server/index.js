@@ -4,28 +4,27 @@ var session = require("express-session");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const massive = require("massive");
-
+const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { SESSION_SECRET, SERVER_PORT } = process.env;
+const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
 
 const authCtrl = require("./controllers/auth");
+const testCtrl = require("./controllers/test");
 
-// const db = await massive({
-//   host: "127.0.0.1",
-//   port: 5432,
-//   database: "appdb",
-//   user: "appuser",
-//   password: "apppwd",
-// });
-
-app.listen(SERVER_PORT, () =>
-  console.log(`Server is listening at http://localhost:${SERVER_PORT}`)
-);
-
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-
-// req.isAuthenticated is provided from the auth router
+mongoose.connect("mongodb://127.0.0.1/gun-app", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("DB IS CONNECTED");
+  app.listen(SERVER_PORT, () =>
+    console.log(`Server listening on port: ${SERVER_PORT}`)
+  );
+  app.set("db", db);
+});
 
 app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
@@ -49,5 +48,7 @@ app.use(
   })
 );
 
-app.post("/auth/login", authCtrl.login);
-app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);
+app.get("/auth/login", authCtrl.login);
+app.post("/test/testPost", testCtrl.testPost);
+app.get("/test/testGet", testCtrl.testGet);
+// app.get("/auth/checkLoggedIn", authCtrl.checkLoggedIn);

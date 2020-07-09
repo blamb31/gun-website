@@ -12,7 +12,11 @@ const gunSchema = new Schema({
     zip: String,
   },
   tags: Array,
-  owner_Id: String,
+  owner_Id: {
+    id: String,
+    first: String,
+    last: String,
+  },
   price: mg.Decimal128,
 });
 
@@ -57,5 +61,21 @@ module.exports = {
     const gunReturn = mg.model("gunModel", gunSchema);
     const gun = await gunReturn.findById("5efadee2b265963b35a97820");
     res.send(gun);
+  },
+  editGunById: async (req, res) => {
+    const gunReturn = mg.model("gunModel", gunSchema);
+    // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
+    const gun = await gunReturn.findOneAndUpdate(
+      { _id: "5efadee2b265963b35a97820" },
+      {
+        owner_Id: {
+          id: "1234",
+          first: "Blake",
+          last: "Lamb",
+        },
+      },
+      { new: true }
+    );
+    res.status(200).send(gun);
   },
 };

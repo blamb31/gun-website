@@ -1,3 +1,10 @@
 <a routerLink="/guns/listings" class="btn btn-primary">
   List a Gun
 </a>
+<div *ngFor="let gun of guns$ | async">
+  <div class="mt-5 gun w-25">
+    <p>{{ gun.name }}</p>
+    <p>{{ gun.price.$numberDecimal }}</p>
+    {{ gun | json }}
+  </div>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { GunsService } from 'src/app/shared/services/guns.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +10,10 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor(private _http: HttpClient) {}
+  guns$: Observable<any>;
+  constructor(private _gunsSvc: GunsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.guns$ = this._gunsSvc.getAllGuns();
+  }
 }

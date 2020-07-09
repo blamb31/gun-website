@@ -50,3 +50,4 @@ app.use(
 app.post("/guns/createGun", gunsCtrl.createGun);
 app.get("/guns/getGuns", gunsCtrl.getAll);
 app.get("/guns/getGun", gunsCtrl.getGunById);
+app.get("/guns/updateGun", gunsCtrl.editGunById);

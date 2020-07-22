@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { ListingsComponent } from './listings/listings.component';
 import { LikesComponent } from './likes/likes.component';
+import { CreateListingComponent } from './create-listing/create-listing.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,15 @@ const routes: Routes = [
       {
         path: '',
         component: ListingsComponent,
+      },
+    ],
+  },
+  {
+    path: 'create-listing',
+    children: [
+      {
+        path: '',
+        component: CreateListingComponent,
       },
     ],
   },

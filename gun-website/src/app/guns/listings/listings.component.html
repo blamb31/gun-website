@@ -1,1 +1,34 @@
-<p>listings works!</p>
+<h1 class="title mb-5">My Listings</h1>
+<div class="w-100 d-flex justify-content-between flex-wrap">
+  <div *ngFor="let gun of guns$ | async" class="pr-5 pl-5 pb-5 mx-3 gun">
+    <div class="d-flex align-items-center">
+      <div class="mr-5 w-50 d-flex flex-column align-items-center">
+        <img
+          class="w-75"
+          [src]="
+            gun.picture ||
+            'https://imengine.prod.ltn.infomaker.io/?uuid=30D055D3-5D34-414F-96E1-ED8C26B4C34C&type=preview&function=original'
+          "
+          alt=""
+        />
+        <div class="w-75 d-flex mt-3 justify-content-around">
+          <a class="link">Edit</a>
+          <a class="link" (click)="deleteGun()">Delete</a>
+        </div>
+      </div>
+      <div class="w-50">
+        <p>{{ gun.name }}</p>
+        <p>{{ gun.price.$numberDecimal | currency }}</p>
+        <p>{{ gun.location.city }}, {{ gun.location.state }}</p>
+        <p *ngIf="gun.dateAdded">
+          {{ gun.dateAdded | date }} ({{ calcTime(gun.dateAdded) }}
+          Days)
+        </p>
+      </div>
+    </div>
+    <hr class="mt-5 mb-0" />
+  </div>
+</div>
+<a routerLink="/guns/create-listing" class="btn btn-primary">
+  List a Gun
+</a>

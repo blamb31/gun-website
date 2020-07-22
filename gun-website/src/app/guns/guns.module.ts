@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ListingsComponent } from './listings/listings.component';
 import { SearchComponent } from './search/search.component';
 import { LikesComponent } from './likes/likes.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateListingComponent } from './create-listing/create-listing.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,14 @@ import { LikesComponent } from './likes/likes.component';
     ListingsComponent,
     SearchComponent,
     LikesComponent,
+    CreateListingComponent,
   ],
 
-  imports: [CommonModule, GunsRoutingModule, RouterModule.forChild([])],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    GunsRoutingModule,
+    RouterModule.forChild([]),
+  ],
 })
 export class GunsModule {}

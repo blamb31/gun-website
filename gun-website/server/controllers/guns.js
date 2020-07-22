@@ -4,7 +4,7 @@ const Schema = mg.Schema;
 
 const gunSchema = new Schema({
   name: String,
-  dateAdded: Date,
+  dateAdded: String,
   location: {
     address: String,
     city: String,
@@ -18,6 +18,7 @@ const gunSchema = new Schema({
     last: String,
   },
   price: mg.Decimal128,
+  picture: String,
 });
 
 const gunModel = mg.model("gunModel", gunSchema);
@@ -28,7 +29,7 @@ module.exports = {
     if (body && body.location) {
       const new_gun = new gunModel({
         name: body.name,
-        date_added: body.date_added,
+        dateAdded: body.date_added,
         location: {
           address: body.location.address,
           city: body.location.city,
@@ -36,12 +37,18 @@ module.exports = {
           zip: body.location.zip,
         },
         tags: body.tags,
-        owner_Id: body.owner_Id,
+        owner_Id: {
+          id: body.owner_Id.id,
+          first: body.owner_Id.first,
+          last: body.owner_Id.last,
+        },
         price: body.price,
+        picture: body.picture,
       });
       new_gun.save((err) => {
         if (err) {
-          return handleError(err);
+          res.status(400).send(err);
+          return err;
         }
       });
       res.send({ message: "the gun was created", obj: new_gun });
@@ -62,20 +69,35 @@ module.exports = {
     const gun = await gunReturn.findById("5efadee2b265963b35a97820");
     res.send(gun);
   },
+  getGunsByOwnerId: async (req, res) => {
+    const gunReturn = mg.model("gunModel", gunSchema);
+    const { ownerId } = req.params;
+    const gun = await gunReturn.find({
+      "owner_Id.id": "1234",
+    });
+    res.send(gun);
+  },
   editGunById: async (req, res) => {
     const gunReturn = mg.model("gunModel", gunSchema);
     // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
     const gun = await gunReturn.findOneAndUpdate(
       { _id: "5efadee2b265963b35a97820" },
       {
-        owner_Id: {
-          id: "1234",
-          first: "Blake",
-          last: "Lamb",
-        },
+        dateAdded: "07-07-2020",
       },
       { new: true }
     );
     res.status(200).send(gun);
+  },
+  deleteGunById: async (req, res) => {
+    // const gunReturn = mg.model("gunModel", gunSchema);
+    // const { gunId } = req.params;
+    // // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
+    // const gun = await gunReturn.findOneAndDelete({
+    //   _id: gunId,
+    // });
+    const guns = req.session;
+    console.log(guns);
+    res.status(200).send(guns);
   },
 };

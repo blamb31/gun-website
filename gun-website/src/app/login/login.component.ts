@@ -27,46 +27,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
-    this._auth.login();
-    // this._http.post('http://localhost:4000/auth/login', {
-    //   user,
-    //   userLoggedIn,
-    // });
-    // this._auth.userProfile$
-    //   .pipe(
-    //     tap((userData) => (user = userData)),
-    //     switchMap(() => {
-    //       let userLoggedIn;
-    //       this._auth.isAuthenticated$
-    //         .pipe(tap((isLoggedIn) => (userLoggedIn = isLoggedIn)))
-    //         .subscribe();
-    //       return userLoggedIn;
-    //     }),
-    //     switchMap((userLoggedIn) => {
-    //       let loggedInUser;
-    //       this._http
-    //         .post('http://localhost:4000/auth/login', {
-    //           user,
-    //           userLoggedIn,
-    //         })
-    //         .pipe(
-    //           tap((returnedUser) => {
-    //             localStorage.setItem('test1', JSON.stringify(returnedUser));
-    //             console.log('hi', returnedUser);
-    //             loggedInUser = returnedUser;
-    //           })
-    //         )
-    //         .subscribe();
-    //       return loggedInUser;
-    //     })
-    //   )
-    // .subscribe();
-    // this._auth.isAuthenticated$
-    //   .pipe(tap((data) => (userLoggedIn = data)))
-    //   .subscribe();
-    // this._http
-    //   .post('http://localhost:4000/auth/login', { user, userLoggedIn })
-    //   .subscribe();
+  async login() {
+    await this._auth.login();
+    console.log('HIHI');
   }
 }

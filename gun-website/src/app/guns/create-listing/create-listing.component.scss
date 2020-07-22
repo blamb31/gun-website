@@ -1,0 +1,18 @@
+@import "src/brand-colors.scss";
+
+img {
+  width: 100px;
+}
+
+.listings-table {
+  max-height: 460px;
+  overflow-y: scroll;
+}
+
+button:disabled,
+button:disabled:hover {
+  background: $primary-color;
+  border: none;
+  color: black;
+  border: 1px solid black;
+}

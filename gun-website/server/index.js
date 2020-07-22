@@ -7,9 +7,10 @@ const massive = require("massive");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
+const { SESSION_SECRET, SERVER_PORT } = process.env;
 
 const gunsCtrl = require("./controllers/guns");
+const userCtrl = require("./controllers/user");
 
 mongoose.connect("mongodb://127.0.0.1/gun-app", {
   useNewUrlParser: true,
@@ -47,7 +48,14 @@ app.use(
   })
 );
 
-app.post("/guns/createGun", gunsCtrl.createGun);
+app.get("/user/getUser/:userEmail", userCtrl.getUser);
+app.post("/user/setSessionUser", userCtrl.setSessionUser);
+app.post("/user/createUser", userCtrl.createUser);
+app.get("/user/checkUser", userCtrl.checkSession);
+
 app.get("/guns/getGuns", gunsCtrl.getAll);
+app.get("/guns/getGuns/:ownerId", gunsCtrl.getGunsByOwnerId);
 app.get("/guns/getGun", gunsCtrl.getGunById);
-app.get("/guns/updateGun", gunsCtrl.editGunById);
+app.post("/guns/createGun", gunsCtrl.createGun);
+app.put("/guns/updateGun", gunsCtrl.editGunById);
+app.delete("/guns/deleteGun/:gunId", gunsCtrl.deleteGunById);

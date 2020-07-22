@@ -1,10 +1,26 @@
-<a routerLink="/guns/listings" class="btn btn-primary">
-  List a Gun
-</a>
-<div *ngFor="let gun of guns$ | async">
-  <div class="mt-5 gun w-25">
-    <p>{{ gun.name }}</p>
-    <p>{{ gun.price.$numberDecimal }}</p>
-    {{ gun | json }}
+<div class="w-100 d-flex justify-content-between flex-wrap">
+  <div
+    *ngFor="let gun of guns$ | async"
+    class="mt-5 p-5 mx-3 gun d-flex align-items-center"
+  >
+    <div class="mr-5 w-50">
+      <img
+        class="w-100"
+        [src]="
+          gun.picture ||
+          'https://imengine.prod.ltn.infomaker.io/?uuid=30D055D3-5D34-414F-96E1-ED8C26B4C34C&type=preview&function=original'
+        "
+        alt=""
+      />
+    </div>
+    <div class="w-50">
+      <p>{{ gun.name }}</p>
+      <p>{{ gun.price.$numberDecimal | currency }}</p>
+      <p>
+        {{ gun.location.city }}, {{ gun.location.state }}
+        <span *ngIf="gun.dateAdded">|</span>
+        {{ gun.dateAdded | date }}
+      </p>
+    </div>
   </div>
 </div>

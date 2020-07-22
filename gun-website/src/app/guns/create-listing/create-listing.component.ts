@@ -66,6 +66,7 @@ export class CreateListingComponent implements OnInit {
       picture:
         'https://images-na.ssl-images-amazon.com/images/I/51NqKMBzYpL._AC_SL1000_.jpg',
     };
+    console.log(this.gunObj);
     this._gunService
       .createGunListing(this.gunObj)
       .pipe(

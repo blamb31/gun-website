@@ -28,10 +28,14 @@ export class ListingsComponent implements OnInit {
     const timeInbetween = (date2 - date1) / (1000 * 3600 * 24);
     return Math.round(timeInbetween);
   }
-  deleteGun() {
+  deleteGun(id: string) {
     return this._gunService
-      .deleteGunById('2')
-      .pipe(tap((data) => console.log({ data })))
+      .deleteGunById(id)
+      .pipe(
+        tap(() => {
+          location.reload();
+        })
+      )
       .subscribe();
   }
 }

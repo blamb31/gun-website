@@ -13,7 +13,7 @@
         />
         <div class="w-75 d-flex mt-3 justify-content-around">
           <a class="link">Edit</a>
-          <a class="link" (click)="deleteGun()">Delete</a>
+          <a class="link" (click)="deleteGun(gun._id)">Delete</a>
         </div>
       </div>
       <div class="w-50">
@@ -21,8 +21,11 @@
         <p>{{ gun.price.$numberDecimal | currency }}</p>
         <p>{{ gun.location.city }}, {{ gun.location.state }}</p>
         <p *ngIf="gun.dateAdded">
-          {{ gun.dateAdded | date }} ({{ calcTime(gun.dateAdded) }}
-          Days)
+          {{ gun.dateAdded | date }} ({{
+            calcTime(gun.dateAdded) > 0
+              ? calcTime(gun.dateAdded) + " Days"
+              : "Today"
+          }})
         </p>
       </div>
     </div>

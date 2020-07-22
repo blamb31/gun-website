@@ -29,7 +29,7 @@ module.exports = {
     if (body && body.location) {
       const new_gun = new gunModel({
         name: body.name,
-        dateAdded: body.date_added,
+        dateAdded: body.dateAdded,
         location: {
           address: body.location.address,
           city: body.location.city,
@@ -90,14 +90,12 @@ module.exports = {
     res.status(200).send(gun);
   },
   deleteGunById: async (req, res) => {
-    // const gunReturn = mg.model("gunModel", gunSchema);
-    // const { gunId } = req.params;
-    // // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
-    // const gun = await gunReturn.findOneAndDelete({
-    //   _id: gunId,
-    // });
-    const guns = req.session;
-    console.log(guns);
-    res.status(200).send(guns);
+    const gunReturn = mg.model("gunModel", gunSchema);
+    const { gunId } = req.params;
+    const gun = await gunReturn.findOneAndDelete({
+      _id: gunId,
+    });
+
+    res.status(200).send(gun);
   },
 };

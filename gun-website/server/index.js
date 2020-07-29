@@ -55,6 +55,7 @@ app.get("/user/checkUser", userCtrl.checkSession);
 
 app.get("/guns/getGuns", gunsCtrl.getAll);
 app.get("/guns/getGuns/:ownerId", gunsCtrl.getGunsByOwnerId);
+app.get("/guns/getGun/:gunId", gunsCtrl.getGunById);
 app.get("/guns/getGun", gunsCtrl.getGunById);
 app.post("/guns/createGun", gunsCtrl.createGun);
 app.put("/guns/updateGun", gunsCtrl.editGunById);

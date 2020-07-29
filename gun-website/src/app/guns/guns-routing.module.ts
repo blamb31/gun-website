@@ -39,6 +39,10 @@ const routes: Routes = [
         path: '',
         component: CreateListingComponent,
       },
+      {
+        path: ':id',
+        component: CreateListingComponent,
+      },
     ],
   },
   {

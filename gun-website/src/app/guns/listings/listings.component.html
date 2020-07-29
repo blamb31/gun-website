@@ -1,13 +1,11 @@
 <h1 class="title mb-5">My Listings</h1>
 <div class="w-100 d-flex justify-content-between flex-wrap">
-  <div *ngFor="let gun of guns$ | async" class="pr-5 pl-5 pb-5 mx-3 gun">
-    <div
-      class="d-flex align-items-center gun"
-      [routerLink]="['/guns/listing', gun._id]"
-    >
+  <div *ngFor="let gun of guns" class="pr-5 pl-5 pb-5 mx-3">
+    <div class="d-flex align-items-center">
       <div class="mr-5 ml-0 w-50 d-flex flex-column align-items-center">
         <img
-          class="w-100"
+          [routerLink]="['/guns/create-listing', gun._id]"
+          class="w-100 gun"
           [src]="
             gun.picture ||
             'https://imengine.prod.ltn.infomaker.io/?uuid=30D055D3-5D34-414F-96E1-ED8C26B4C34C&type=preview&function=original'
@@ -15,13 +13,13 @@
           alt=""
         />
         <div class="w-75 d-flex mt-3 justify-content-around">
-          <a class="link" [routerLink]="['/guns/listing/edit', gun._id]"
+          <a class="link" [routerLink]="['/guns/create-listing/', gun._id]"
             >Edit</a
           >
           <a class="link" (click)="deleteGun(gun._id)">Delete</a>
         </div>
       </div>
-      <div class="w-50">
+      <div class="w-50 gun" [routerLink]="['/guns/create-listing', gun._id]">
         <p>{{ gun.name }}</p>
         <p>{{ gun.price.$numberDecimal | currency }}</p>
         <p>{{ gun.location.city }}, {{ gun.location.state }}</p>

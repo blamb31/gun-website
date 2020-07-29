@@ -3,6 +3,7 @@ import { GunsService } from 'src/app/shared/services/guns.service';
 import { tap } from 'rxjs/operators';
 import { Auth0Client } from '@auth0/auth0-spa-js';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-listings',
@@ -10,15 +11,29 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./listings.component.scss'],
 })
 export class ListingsComponent implements OnInit {
-  constructor(private _gunService: GunsService, private auth: AuthService) {}
+  constructor(private _gunService: GunsService, private _auth: AuthService) {}
   public guns: any;
-
+  private email: any;
+  public name: any = {
+    first: '',
+    last: '',
+  };
   ngOnInit() {
-    this.getGuns();
+    this._auth.userProfile$
+      .pipe(
+        tap((data: any) => console.log({ data })),
+        tap((data: any) => {
+          this.email = data.email;
+          this.name.first = data.given_name;
+          this.name.last = data.family_name;
+          this.guns$ = this.getGuns(data.email);
+        })
+      )
+      .subscribe();
   }
-  getGuns() {
+  getGuns(ownerId: string) {
     this._gunService
-      .getGunsByOwner('1234')
+      .getGunsByOwner(ownerId)
       .pipe(
         tap((data) => {
           this.guns = data;
@@ -27,10 +42,16 @@ export class ListingsComponent implements OnInit {
       .subscribe();
   }
   calcTime(startDate: string) {
-    const date1 = new Date(startDate).getTime();
-    const date2 = new Date().getTime();
-    const timeInbetween = (date2 - date1) / (1000 * 3600 * 24);
-    return Math.round(timeInbetween);
+    const date1 = moment.utc(startDate);
+    const today = moment.utc();
+    // console.log(date1, today);
+    // if (date1date === today) {
+    //   return 0;
+    // }
+
+    const timeInbetween = today.diff(date1, 'days');
+
+    return timeInbetween;
   }
   deleteGun(id: string) {
     return this._gunService

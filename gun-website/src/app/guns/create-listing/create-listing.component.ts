@@ -6,6 +6,8 @@ import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Auth0Client } from '@auth0/auth0-spa-js';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-create-listing',
@@ -17,21 +19,37 @@ export class CreateListingComponent implements OnInit {
     private _fb: FormBuilder,
     private _gunService: GunsService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _auth: AuthService
   ) {}
   public createGunListingForm: FormGroup;
   public gunObj: any;
   public gunId: any;
+  private email: string;
+  public name: any = {
+    first: '',
+    last: '',
+  };
   public myGuns$: Observable<any>;
   public imgUrl: string =
     'https://imengine.prod.ltn.infomaker.io/?uuid=30D055D3-5D34-414F-96E1-ED8C26B4C34C&type=preview&function=original';
 
   ngOnInit() {
+    this._auth.userProfile$
+      .pipe(
+        tap((data: any) => console.log({ data })),
+        tap((data: any) => {
+          this.email = data.email;
+          this.name.first = data.given_name;
+          this.name.last = data.family_name;
+          this.myGuns$ = this._gunService.getGunsByOwner(data.email);
+        })
+      )
+      .subscribe();
     this._route.params
       .pipe(
         tap((params: Params) => {
           this.gunId = params.id;
-          console.log({ id: this.gunId });
           this.createGunListingForm = this._fb.group({
             name: ['', Validators.required],
             price: ['', Validators.required],
@@ -47,12 +65,11 @@ export class CreateListingComponent implements OnInit {
               .getGunById(params.id)
               .pipe(
                 tap((data: any) => {
-                  console.log({ data });
                   this.createGunListingForm.patchValue({
                     name: data.name,
                     price: data.price.$numberDecimal,
                     address: data.location.address,
-                    city: data.location.address,
+                    city: data.location.city,
                     state: data.location.state,
                     zip: data.location.zip,
                   });
@@ -63,14 +80,6 @@ export class CreateListingComponent implements OnInit {
         })
       )
       .subscribe();
-
-    this.myGuns$ = this._gunService.getGunsByOwner('1234').pipe(
-      tap((data) => {
-        if (data.picture) {
-          this.imgUrl = data.picture;
-        }
-      })
-    );
   }
 
   updateGunListing() {
@@ -86,14 +95,13 @@ export class CreateListingComponent implements OnInit {
       },
       tags: [],
       owner_Id: {
-        id: '1234',
-        first: 'Blake',
-        last: 'Lamb',
+        id: this.email,
+        first: this.name.first,
+        last: this.name.last,
       },
       price: value.price,
       picture: 'https://i.redd.it/pzr3ce4t54l21.jpg',
     };
-    console.log(this.gunObj);
     this._gunService
       .updateGunById(this.gunId, this.gunObj)
       .pipe(
@@ -117,7 +125,7 @@ export class CreateListingComponent implements OnInit {
       },
       tags: [],
       owner_Id: {
-        id: '1234',
+        id: this.email,
         first: 'Blake',
         last: 'Lamb',
       },

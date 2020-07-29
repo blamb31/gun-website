@@ -73,7 +73,7 @@ module.exports = {
     const gunReturn = mg.model("gunModel", gunSchema);
     const { ownerId } = req.params;
     const gun = await gunReturn.find({
-      "owner_Id.id": "1234",
+      "owner_Id.id": ownerId,
     });
     res.send(gun);
   },

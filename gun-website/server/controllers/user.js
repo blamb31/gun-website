@@ -25,6 +25,17 @@ module.exports = {
     res.status(200).send(user);
   },
 
+  checkUser(req, res, next) {
+    let { body } = req;
+    if (body.isLoggedIn && body.email && body.emailVar) {
+      next();
+    } else {
+      res
+        .status(400)
+        .send("User isn't logged in or doesn't have a vlaid email.");
+    }
+  },
+
   setSessionUser: async (req, res) => {
     // req.session.user = {
     //   email: req.body.email,

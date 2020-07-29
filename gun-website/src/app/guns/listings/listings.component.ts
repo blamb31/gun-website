@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GunsService } from 'src/app/shared/services/guns.service';
 import { tap } from 'rxjs/operators';
+import { Auth0Client } from '@auth0/auth0-spa-js';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-listings',
@@ -8,19 +10,21 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./listings.component.scss'],
 })
 export class ListingsComponent implements OnInit {
-  constructor(private _gunService: GunsService) {}
-  public guns$;
+  constructor(private _gunService: GunsService, private auth: AuthService) {}
+  public guns: any;
 
   ngOnInit() {
-    this.guns$ = this._gunService
+    this.getGuns();
+  }
+  getGuns() {
+    this._gunService
       .getGunsByOwner('1234')
-      .pipe
-      // tap((data) => {
-      //   if (data.picture) {
-      //     this.imgUrl = data.picture;
-      //   }
-      // })
-      ();
+      .pipe(
+        tap((data) => {
+          this.guns = data;
+        })
+      )
+      .subscribe();
   }
   calcTime(startDate: string) {
     const date1 = new Date(startDate).getTime();
@@ -33,7 +37,7 @@ export class ListingsComponent implements OnInit {
       .deleteGunById(id)
       .pipe(
         tap(() => {
-          location.reload();
+          this.getGuns();
         })
       )
       .subscribe();

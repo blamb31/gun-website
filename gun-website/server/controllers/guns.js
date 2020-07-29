@@ -66,7 +66,7 @@ module.exports = {
 
   getGunById: async (req, res) => {
     const gunReturn = mg.model("gunModel", gunSchema);
-    const gun = await gunReturn.findById("5efadee2b265963b35a97820");
+    const gun = await gunReturn.findById(req.params.gunId);
     res.send(gun);
   },
   getGunsByOwnerId: async (req, res) => {
@@ -81,11 +81,11 @@ module.exports = {
     const gunReturn = mg.model("gunModel", gunSchema);
     // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
     const gun = await gunReturn.findOneAndUpdate(
-      { _id: "5efadee2b265963b35a97820" },
-      {
-        dateAdded: "07-07-2020",
-      },
-      { new: true }
+      req.body.gunId,
+
+      req.body.gun,
+
+      { new: true, useFindAndModify: false }
     );
     res.status(200).send(gun);
   },

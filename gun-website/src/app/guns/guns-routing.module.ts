@@ -5,6 +5,8 @@ import { SearchComponent } from './search/search.component';
 import { ListingsComponent } from './listings/listings.component';
 import { LikesComponent } from './likes/likes.component';
 import { CreateListingComponent } from './create-listing/create-listing.component';
+import { ListingComponent } from './listing/listing.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,10 @@ const routes: Routes = [
         path: '',
         component: CreateListingComponent,
       },
+      {
+        path: ':id',
+        component: CreateListingComponent,
+      },
     ],
   },
   {
@@ -45,6 +51,19 @@ const routes: Routes = [
       {
         path: '',
         component: LikesComponent,
+      },
+    ],
+  },
+  {
+    path: 'listing',
+    children: [
+      {
+        path: ':id',
+        component: ListingComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditComponent,
       },
     ],
   },

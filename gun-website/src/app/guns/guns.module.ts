@@ -9,6 +9,8 @@ import { SearchComponent } from './search/search.component';
 import { LikesComponent } from './likes/likes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateListingComponent } from './create-listing/create-listing.component';
+import { ListingComponent } from './listing/listing.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CreateListingComponent } from './create-listing/create-listing.componen
     SearchComponent,
     LikesComponent,
     CreateListingComponent,
+    ListingComponent,
+    EditComponent,
   ],
 
   imports: [

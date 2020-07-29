@@ -11,6 +11,9 @@ export class GunsService {
   getAllGuns() {
     return this._http.get(`${this.baseUrl}/guns/getGuns`);
   }
+  getGunById(gunId: string) {
+    return this._http.get(`${this.baseUrl}/guns/getGun/${gunId}`);
+  }
 
   createGunListing(gunInfo: any) {
     return this._http.post(`${this.baseUrl}/guns/createGun`, gunInfo);
@@ -22,5 +25,9 @@ export class GunsService {
 
   deleteGunById(gunId: string) {
     return this._http.delete(`${this.baseUrl}/guns/deleteGun/${gunId}`);
+  }
+
+  updateGunById(gunId: string, gun: any) {
+    return this._http.put(`${this.baseUrl}/guns/updateGun`, { gunId, gun });
   }
 }

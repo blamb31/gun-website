@@ -2,6 +2,9 @@
 @import "src/brand-colors.scss";
 @import "~bootstrap/scss/bootstrap.scss";
 
+* {
+  font-size: 1.5rem;
+}
 a:hover {
   cursor: pointer;
   text-decoration: none;

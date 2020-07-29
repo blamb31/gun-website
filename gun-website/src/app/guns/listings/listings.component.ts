@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GunsService } from 'src/app/shared/services/guns.service';
 import { tap } from 'rxjs/operators';
+import { Auth0Client } from '@auth0/auth0-spa-js';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-listings',
@@ -8,7 +10,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./listings.component.scss'],
 })
 export class ListingsComponent implements OnInit {
-  constructor(private _gunService: GunsService) {}
+  constructor(private _gunService: GunsService, private auth: AuthService) {}
   public guns$;
 
   ngOnInit() {

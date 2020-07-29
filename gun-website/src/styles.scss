@@ -67,3 +67,6 @@ hr {
     rgba(0, 0, 0, 0)
   );
 }
+*[routerLink] {
+  cursor: pointer;
+}

@@ -100,6 +100,7 @@ export class CreateListingComponent implements OnInit {
         id: this.email,
         first: this.name.first,
         last: this.name.last,
+        email: this.email,
       },
       price: value.price,
       picture: 'https://i.redd.it/pzr3ce4t54l21.jpg',

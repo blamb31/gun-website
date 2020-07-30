@@ -14,8 +14,6 @@ export class ListingComponent implements OnInit {
   gun$: Observable<any>;
 
   ngOnInit() {
-    this.formatPhone('1234123412');
-
     this.gun$ = this._route.params.pipe(
       switchMap((params: Params) => {
         return (this.gun$ = this._guns.getGunById(params.id).pipe(
@@ -43,7 +41,6 @@ export class ListingComponent implements OnInit {
       }
     }
     let formattedPhone = formattedPhoneArr.join('');
-    console.log(formattedPhone);
     return formattedPhone;
   }
 }

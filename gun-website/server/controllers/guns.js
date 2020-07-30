@@ -16,6 +16,7 @@ const gunSchema = new Schema({
     id: String,
     first: String,
     last: String,
+    email: String,
   },
   price: mg.Decimal128,
   picture: String,
@@ -43,11 +44,12 @@ module.exports = {
           id: body.owner_Id.id,
           first: body.owner_Id.first,
           last: body.owner_Id.last,
+          email: body.owner_Id.email,
         },
         price: body.price,
         picture: body.picture,
         description: body.description,
-        phone: body.description,
+        phone: body.phone,
       });
       new_gun.save((err) => {
         if (err) {
@@ -65,12 +67,15 @@ module.exports = {
     const gunReturn = mg.model("gunModel", gunSchema);
 
     const all = await gunReturn.find({});
+    for (const gun of all) {
+    }
     res.send(all);
   },
 
   getGunById: async (req, res) => {
     const gunReturn = mg.model("gunModel", gunSchema);
     const gun = await gunReturn.findById(req.params.gunId);
+
     res.send(gun);
   },
   getGunsByOwnerId: async (req, res) => {
@@ -79,6 +84,7 @@ module.exports = {
     const gun = await gunReturn.find({
       "owner_Id.id": ownerId,
     });
+
     res.send(gun);
   },
   editGunById: async (req, res) => {
@@ -91,6 +97,7 @@ module.exports = {
 
       { new: true, useFindAndModify: false }
     );
+
     res.status(200).send(gun);
   },
   deleteGunById: async (req, res) => {

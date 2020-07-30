@@ -10,7 +10,7 @@ export class GunsService {
   private baseUrl: string = 'http://localhost:4001';
 
   getAllGuns() {
-    return this._http.get(`${this.baseUrl}/guns/getGuns`);
+    return this._http.get(`${this.baseUrl}/guns/getAllGuns`);
   }
   getGunById(gunId: string) {
     return this._http.get(`${this.baseUrl}/guns/getGun/${gunId}`);

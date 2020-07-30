@@ -10,6 +10,11 @@ import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {
+    path: 'guns',
+    redirectTo: '/guns/search',
+    pathMatch: 'full',
+  },
+  {
     path: '',
     redirectTo: '/guns/search',
     pathMatch: 'full',

@@ -28,6 +28,17 @@
           <label for="zip">Zip Code</label>
           <input type="text" class="form-control" formControlName="zip" />
         </div>
+        <div class="mt-3">
+          <label for="zip">Phone Number</label>
+          <input type="text" class="form-control" formControlName="phone" />
+        </div>
+        <div class="mt-3">
+          <label for="zip">Description</label>
+          <textarea
+            class="form-control"
+            formControlName="description"
+          ></textarea>
+        </div>
 
         <button
           *ngIf="!gunId"

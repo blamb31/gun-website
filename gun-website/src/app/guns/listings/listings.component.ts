@@ -35,7 +35,6 @@ export class ListingsComponent implements OnInit {
       .getGunsByOwner(ownerId)
       .pipe(
         tap((data) => {
-          console.log({ data });
           this.guns = data;
         })
       )

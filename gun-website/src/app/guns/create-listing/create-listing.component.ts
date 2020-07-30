@@ -57,6 +57,8 @@ export class CreateListingComponent implements OnInit {
             city: ['', Validators.required],
             state: ['', Validators.required],
             zip: ['', Validators.required],
+            phone: ['', Validators.required],
+            description: ['', Validators.required],
             // first: ['', Validators.required],
             // last: ['', Validators.required],
           });
@@ -101,6 +103,7 @@ export class CreateListingComponent implements OnInit {
       },
       price: value.price,
       picture: 'https://i.redd.it/pzr3ce4t54l21.jpg',
+      description: value.description,
     };
     console.log({ id: this.gunId, gun: this.gunObj });
     this._gunService
@@ -133,6 +136,7 @@ export class CreateListingComponent implements OnInit {
       price: value.price,
       picture:
         'https://images-na.ssl-images-amazon.com/images/I/51NqKMBzYpL._AC_SL1000_.jpg',
+      description: value.description,
     };
     console.log(this.gunObj);
     this._gunService

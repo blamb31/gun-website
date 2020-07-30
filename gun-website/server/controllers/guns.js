@@ -19,6 +19,8 @@ const gunSchema = new Schema({
   },
   price: mg.Decimal128,
   picture: String,
+  description: String,
+  phone: String,
 });
 
 const gunModel = mg.model("gunModel", gunSchema);
@@ -44,6 +46,8 @@ module.exports = {
         },
         price: body.price,
         picture: body.picture,
+        description: body.description,
+        phone: body.description,
       });
       new_gun.save((err) => {
         if (err) {

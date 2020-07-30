@@ -81,7 +81,7 @@ module.exports = {
     const gunReturn = mg.model("gunModel", gunSchema);
     // const gun = await gunReturn.findOneAndUpdate(req.body.id, req.body.changes);
     const gun = await gunReturn.findOneAndUpdate(
-      req.body.gunId,
+      { _id: req.body.gunId },
 
       req.body.gun,
 

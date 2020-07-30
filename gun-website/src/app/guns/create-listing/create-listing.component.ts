@@ -102,6 +102,7 @@ export class CreateListingComponent implements OnInit {
       price: value.price,
       picture: 'https://i.redd.it/pzr3ce4t54l21.jpg',
     };
+    console.log({ id: this.gunId, gun: this.gunObj });
     this._gunService
       .updateGunById(this.gunId, this.gunObj)
       .pipe(

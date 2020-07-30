@@ -1,6 +1,6 @@
 <h1 class="title mb-5">My Listings</h1>
 <div class="w-100 d-flex justify-content-between flex-wrap">
-  <ng-container *ngIf="guns.length > 0; else noGuns">
+  <ng-container *ngIf="guns && guns.length > 0; else noGuns">
     <div *ngFor="let gun of guns" class="pr-5 pl-5 pb-5 mx-3">
       <div class="d-flex align-items-center">
         <div class="mr-5 ml-0 w-50 d-flex flex-column align-items-center">

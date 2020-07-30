@@ -21,12 +21,11 @@ export class ListingsComponent implements OnInit {
   ngOnInit() {
     this._auth.userProfile$
       .pipe(
-        tap((data: any) => console.log({ data })),
         tap((data: any) => {
           this.email = data.email;
           this.name.first = data.given_name;
           this.name.last = data.family_name;
-          this.guns$ = this.getGuns(data.email);
+          this.getGuns(data.email);
         })
       )
       .subscribe();
@@ -36,6 +35,7 @@ export class ListingsComponent implements OnInit {
       .getGunsByOwner(ownerId)
       .pipe(
         tap((data) => {
+          console.log({ data });
           this.guns = data;
         })
       )
@@ -58,7 +58,7 @@ export class ListingsComponent implements OnInit {
       .deleteGunById(id)
       .pipe(
         tap(() => {
-          this.getGuns();
+          this.getGuns(this.email);
         })
       )
       .subscribe();

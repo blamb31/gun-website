@@ -1,41 +1,55 @@
 <div class="d-flex">
   <div class="w-50 d-flex flex-column align-items-start p-5">
     <h1 class="title w-50">{{ gunId ? "Gun Info" : "List a Gun" }}</h1>
-    <div class="w-50 d-flex justify-content-center mt-5">
-      <form [formGroup]="createGunListingForm" class="w-75">
-        <div class="mt-3">
-          <label for="name">Gun Name</label>
-          <input type="text" class="form-control" formControlName="name" />
-        </div>
-        <div class="mt-3">
-          <label for="price">Price</label>
-          <input type="number" class="form-control" formControlName="price" />
-        </div>
+    <div class="w-100 d-flex justify-content-center mt-5">
+      <form [formGroup]="createGunListingForm" class="w-100">
+        <div class="w-100 d-flex justify-content-around">
+          <div class="input-containers">
+            <div class="mt-3">
+              <label for="name">Gun Name</label>
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+            <div class="mt-3">
+              <label for="price">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="price"
+              />
+            </div>
 
-        <div class="mt-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" formControlName="address" />
+            <div class="mt-3">
+              <label for="address">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="address"
+              />
+            </div>
+            <div class="mt-3">
+              <label for="city">City</label>
+              <input type="text" class="form-control" formControlName="city" />
+            </div>
+          </div>
+          <div class="input-containers">
+            <div class="mt-3">
+              <label for="state">State</label>
+              <input type="text" class="form-control" formControlName="state" />
+            </div>
+            <div class="mt-3">
+              <label for="zip">Zip Code</label>
+              <input type="text" class="form-control" formControlName="zip" />
+            </div>
+            <div class="mt-3">
+              <label for="zip">Phone Number</label>
+              <input type="text" class="form-control" formControlName="phone" />
+            </div>
+          </div>
         </div>
-        <div class="mt-3">
-          <label for="city">City</label>
-          <input type="text" class="form-control" formControlName="city" />
-        </div>
-        <div class="mt-3">
-          <label for="state">State</label>
-          <input type="text" class="form-control" formControlName="state" />
-        </div>
-        <div class="mt-3">
-          <label for="zip">Zip Code</label>
-          <input type="text" class="form-control" formControlName="zip" />
-        </div>
-        <div class="mt-3">
-          <label for="zip">Phone Number</label>
-          <input type="text" class="form-control" formControlName="phone" />
-        </div>
-        <div class="mt-3">
+        <div class="mt-3 ml-5">
           <label for="zip">Description</label>
           <textarea
-            class="form-control"
+            class="form-control ta"
             formControlName="description"
           ></textarea>
         </div>
@@ -60,7 +74,7 @@
     </div>
   </div>
   <div class="w-50 px-5 my-5 listings-table">
-    <h1 class="title w-50">Your Listings</h1>
+    <h1 class="title w-50">My Current Listings</h1>
     <div>
       <div
         class="my-5 px-5 d-flex align-items-center"

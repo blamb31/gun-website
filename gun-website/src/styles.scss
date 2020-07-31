@@ -9,6 +9,9 @@ a:hover {
   cursor: pointer;
   text-decoration: none;
 }
+input {
+  font-size: 1.5rem;
+}
 a.link {
   font-size: 1.5rem;
   color: $link-color;
@@ -28,6 +31,11 @@ p {
 .form-control-div {
   display: flex;
   flex-direction: column;
+}
+
+.form-control {
+  font-size: 1.5rem;
+  color: black;
 }
 
 .btn {

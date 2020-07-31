@@ -36,6 +36,7 @@ export class ListingsComponent implements OnInit {
       .pipe(
         tap((data) => {
           this.guns = data;
+          this.guns.sort((a, b) => (a.dateAdded > b.dateAdded ? 1 : -1));
         })
       )
       .subscribe();

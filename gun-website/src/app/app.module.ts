@@ -8,9 +8,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { S3BucketComponent } from './s3-bucket/s3-bucket.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, ProfileComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, ProfileComponent, S3BucketComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

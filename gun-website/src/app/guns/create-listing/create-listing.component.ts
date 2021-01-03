@@ -67,6 +67,7 @@ export class CreateListingComponent implements OnInit {
               .getGunById(params.id)
               .pipe(
                 tap((data: any) => {
+                  console.log({ data });
                   this.createGunListingForm.patchValue({
                     name: data.name,
                     price: data.price.$numberDecimal,
@@ -74,6 +75,8 @@ export class CreateListingComponent implements OnInit {
                     city: data.location.city,
                     state: data.location.state,
                     zip: data.location.zip,
+                    phone: data.phone,
+                    description: data.description,
                   });
                 })
               )
@@ -103,6 +106,7 @@ export class CreateListingComponent implements OnInit {
         email: this.email,
       },
       price: value.price,
+      phone: value.phone,
       picture: 'https://i.redd.it/pzr3ce4t54l21.jpg',
       description: value.description,
     };
